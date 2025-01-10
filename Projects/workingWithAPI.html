@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+      }
+      .details {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="details"></div>
+      <button class="load">Load Details</button>
+    </div>
+
+    <script>
+      const load = document.querySelector(".load");
+      const details = document.querySelector(".details");
+
+      load.addEventListener("click", function () {
+        const requestUrl = "https://api.github.com/users/NitishPalyal";
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", requestUrl);
+        xhr.onreadystatechange = function () {
+          // console.log(xhr.readyState);
+          if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+            //console.log(typeof data);
+            //console.log(data.followers);
+            //console.log(data.login);
+            // console.log(data.avatar_url);
+            // console.log(data);
+            details.innerHTML = `<img src="${data.avatar_url}" alt="" srcset="" height="200" width="200">
+            <h2>Name :- ${data.login}</h2>
+            <b>Followers :- ${data.followers}</b>
+            <b>Following :- ${data.following}</b>`;
+          }
+        };
+        xhr.send();
+      });
+    </script>
+  </body>
+</html>
