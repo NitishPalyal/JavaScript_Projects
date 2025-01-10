@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time-Clock</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .clock {
+        background-color: yellow;
+        height: 7rem;
+        width: 20rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: black;
+        border-radius: 5px;
+        border: 10px solid blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="clock"></div>
+    </div>
+    <script>
+      const clock = document.querySelector(".clock");
+
+      setInterval(() => {
+        const currDate = new Date();
+        clock.innerHTML = currDate.toLocaleTimeString();
+      }, 1000);
+    </script>
+  </body>
+</html>

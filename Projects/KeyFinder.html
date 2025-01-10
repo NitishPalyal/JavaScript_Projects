@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .insert{
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(156, 68, 238);
+    }
+  </style>
+</head>
+<body>
+  <div class="insert"></div>
+  <script>
+    const insert = document.querySelector(".insert");
+    window.addEventListener("keydown",(e)=>{
+      insert.innerHTML =`
+      <div class= "color">
+        <table border ="z">
+          <tr>
+            <th>key</th>
+            <th>keycode</th>
+            <th>code</th>
+            </tr>
+          <tr>
+            <th>${e.key === " " ? "space" : e.key}</th>
+            <th>${e.keyCode}</th>
+            <th>${e.code}</th>
+            </tr>
+            </table>
+        </div>`;
+    })
+  </script>
+</body>
+</html>
